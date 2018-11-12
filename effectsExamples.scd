@@ -83,7 +83,7 @@ SynthDef(\mtap_buf, {
 
 
 x = Synth(\mtap_live, [ \buffer, c] ] );
-y = Synth(\mtap_buf, [ \buffer, c, \panrate, 0.2, \sbuf, b[9], \delaytimes, [0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5, 0.7, 0.9, 1.1], \amps, [1, 0.95, 0.9, 0.85, 0.8, 0.75, 0.7, 0.65, 0.6, 1] ] );
+y = Synth(\mtap_buf, [ \buffer, c, \panrate, 0.2, \sbuf, b[2], \delaytimes, [0.15, 0.1, 0.45, 0.2, 1.3, 1.4, 0.5, 0.7, 1.9, 1.5], \amps, [1, 0.95, 0.9, 0.85, 0.8, 0.75, 0.7, 0.65, 0.6, 1] ] );
 
 
 	
