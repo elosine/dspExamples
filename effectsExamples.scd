@@ -8,12 +8,17 @@ b = SoundFile.collectIntoBuffers(Document.current.dir ++ "/samples/*");
 {  PlayBuf.ar(2, b[1]) }.play;
 
 //Tremelo
+SinOsc.ar(  15  ).range( 0.3, 1 );
 { SoundIn.ar() * SinOsc.ar( 15 ).range( 0, 1 ) }.play;
-{ PlayBuf.ar(2, b[2], loop:1) * SinOsc.ar( LFTri.kr( 0.1 ).range( 3, 20 ) ).range( 0, 1 ) }.play;
+{ PlayBuf.ar(2, b[2], loop:1) * SinOsc.ar( LFTri.kr( SinOsc.kr(0.05).range(0.1, 0.5) ).range( 3, 20 ) ).range( 0, 1 ) }.play;
+
+{PlayBuf.ar(2, b[2], loop:1)}.play
 
 //Side Bands Harmonic Distortion
-{ PlayBuf.ar(2, b[5], startPos: 480000, loop:1) * SinOsc.ar( 2000 ).range( 0, 1 ) }.play;s
+{ PlayBuf.ar(2, b[5], startPos: 480000, loop:1) * SinOsc.ar( 440 ).range( 0, 1 ) }.play;
 { PlayBuf.ar(2, b[5], startPos: 480000, loop:1) * SinOsc.ar( SinOsc.kr(0.005).range(30, 5000) ).range( 0, 1 ) }.play;
+
+{PlayBuf.ar(2, b[5], startPos: 480000, loop:1) }.play;
 
 //RING MODULATION
 //"https://synthrotek.com/wp-content/uploads/2012/06/IMG_2307.jpg"
@@ -24,6 +29,7 @@ b = SoundFile.collectIntoBuffers(Document.current.dir ++ "/samples/*");
 { SoundIn.ar() * SinOsc.ar(440) }.play
 //moving carrier
 { PlayBuf.ar(2, b[3], loop:1) * SinOsc.ar( LFSaw.kr(0.01).range(300, 1000) ) }.play
+{ PlayBuf.ar(2, b[3], loop:1) }.play
 //tremelo on carrier
 { PlayBuf.ar(2, b[3], loop:1) * ( SinOsc.ar( LFSaw.kr(0.01).range(300, 1000)  )  *  SinOsc.ar(4).range(0.2, 1) ) }.play
 
@@ -41,6 +47,7 @@ b = SoundFile.collectIntoBuffers(Document.current.dir ++ "/samples/*");
 { LPCAnalyzer.ar( SoundIn.ar(), PlayBuf.ar(2,b[6], rate: 1, loop:1), 256, 256);}.play
 { LPCAnalyzer.ar( PlayBuf.ar(2, b[7], loop:1), PlayBuf.ar(2, b[6], loop:1), 256, 256);}.play
 
+{PlayBuf.ar(2, b[6], loop:1)}.play
 
 //PITCH SHIFT
 // https://www.youtube.com/watch?v=bWXazVhlyxQ     3:49
@@ -49,7 +56,7 @@ b = SoundFile.collectIntoBuffers(Document.current.dir ++ "/samples/*");
 //MULTI TAP DELAY
 //https://www.youtube.com/watch?v=DtoKllisYdU  3:00
 //https://www.youtube.com/watch?v=l2puvI4IfG0
-//https://www.youtube.com/watch?v=QUD4aA2RQk0
+//https://www.youtube.com/watch?v=QUD4aA2RQk0v   //tutorial video
 (
 c = Buffer.alloc(s, s.sampleRate*2, 1);
 
