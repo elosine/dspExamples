@@ -85,7 +85,7 @@ fork{
 //for live input, use headphones
 x = Synth( \IASIAR_live, [ \spectrumBufnumL, ~irSpectrums_L[0].bufnum, \spectrumBufnumR, ~irSpectrums_R[0].bufnum ] );
 //for sound buffer
-y = Synth( \IASIAR_buffer, [ \buf, b[10], \spectrumBufnumL, ~irSpectrums_L[4].bufnum, \spectrumBufnumR, ~irSpectrums_R[4].bufnum ] );
+y = Synth( \IASIAR_buffer, [ \buf, b[3], \spectrumBufnumL, ~irSpectrums_L[11].bufnum, \spectrumBufnumR, ~irSpectrums_R[11].bufnum, \inAmp, 0.1 ] );
 
 x.free;
 y.free;
