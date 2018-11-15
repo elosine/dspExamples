@@ -44,6 +44,7 @@ SinOsc.ar(  15  ).range( 0.3, 1 );
 //https://www.youtube.com/watch?v=uRo426va26I
 //https://www.youtube.com/watch?v=UYIAfiVGluk
 
+//live in use headphones
 { LPCAnalyzer.ar( SoundIn.ar(), PlayBuf.ar(2,b[6], rate: 1, loop:1), 256, 256);}.play
 { LPCAnalyzer.ar( PlayBuf.ar(2, b[7], loop:1), PlayBuf.ar(2, b[6], loop:1), 256, 256);}.play
 
@@ -56,7 +57,7 @@ SinOsc.ar(  15  ).range( 0.3, 1 );
 //MULTI TAP DELAY
 //https://www.youtube.com/watch?v=DtoKllisYdU  3:00
 //https://www.youtube.com/watch?v=l2puvI4IfG0
-//https://www.youtube.com/watch?v=QUD4aA2RQk0v   //tutorial video
+//https://www.youtube.com/watch?v=QUD4aA2RQk0&t=2s   //tutorial video
 (
 c = Buffer.alloc(s, s.sampleRate*2, 1);
 
@@ -85,5 +86,6 @@ SynthDef(\mtap_buf, {
 x = Synth(\mtap_live, [ \buffer, c] ] );
 y = Synth(\mtap_buf, [ \buffer, c, \panrate, 0.2, \sbuf, b[2], \delaytimes, [0.15, 0.1, 0.45, 0.2, 1.3, 1.4, 0.5, 0.7, 1.9, 1.5], \amps, [1, 0.95, 0.9, 0.85, 0.8, 0.75, 0.7, 0.65, 0.6, 1] ] );
 
+//Convolution Reverb
 
 	
